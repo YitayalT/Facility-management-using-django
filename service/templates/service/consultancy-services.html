@@ -1,0 +1,189 @@
+{% extends 'service/base.html' %}
+{% block content %}
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="h4 text-success">Consultancy Services</div>
+            <hr style="background-color: blue;">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <form action="#" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="project_design"
+                                    name="project_design">
+                                <label class="form-check-label" for="project_design">
+                                    Project Design & preparation
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="environmental_impact"
+                                    name="environmental_impact">
+                                <label class="form-check-label" for="environmental_impact">
+                                    Environmental Impact Assessment
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="feasibility_study"
+                                    name="feasibility_study">
+                                <label class="form-check-label" for="feasibility_study">
+                                    Feasibility Study
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="Proposal_Preparation"
+                                    name="Proposal_Preparation">
+                                <label class="form-check-label" for="Proposal_Preparation">
+                                    Investment Proposal Preparation
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- here -->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="Business_Plan_preparation"
+                                    name="Business_Plan_preparation">
+                                <label class="form-check-label" for="Business_Plan_preparation">
+                                    Business Plan preparation
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="Organizational_Structure"
+                                    name="Organizational_Structure">
+                                <label class="form-check-label" for="Organizational_Structure">
+                                    Organizational Structure
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="Salary_Scale_Preparation"
+                                    name="Salary_Scale_Preparation">
+                                <label class="form-check-label" for="Salary_Scale_Preparation">
+                                    Salary Scale Preparation
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="JobEvaluationAndGrading"
+                                    name="JobEvaluationAndGrading">
+                                <label class="form-check-label" for="JobEvaluationAndGrading">
+                                    Job Evaluation and Grading
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- here -->
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="StrategicPlanningManagement"
+                                    name="StrategicPlanningManagement">
+                                <label class="form-check-label" for="StrategicPlanningManagement">
+                                    Strategic Planning Management
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="AssessmentSurvey"
+                                    name="AssessmentSurvey">
+                                <label class="form-check-label" for="AssessmentSurvey">
+                                    Training Need Assessment Survey
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="ReformImplementation"
+                                    name="ReformImplementation">
+                                <label class="form-check-label" for="ReformImplementation">
+                                    Reform Implementation
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="OthersDocumentPreparation"
+                                    name="OthersDocumentPreparation">
+                                <label class="form-check-label" for="OthersDocumentPreparation">
+                                    Others Document Preparation
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="username"><small>Requested By:</small></label>
+                          <input type="text" class="form-control" id="username" name="username" placeholder="user name">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="email"> <small>Email:</small></label>
+                          <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                        </div>
+                      </div>
+                </div>
+            </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr style="background-color: blue;">
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-md-12 offset-md-6">
+                        <button type="submit"  class="btn atc btn-outline-primary center"> submit </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-5">
+                        <b><a href="{% url 'service:training_service' %}"> &nbsp;&nbsp;&nbsp;&nbsp; Training
+                                services</a></b>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        
+                        <h6>Do you want other services? &nbsp;&nbsp;&nbsp;&nbsp;<a
+                                href="{% url 'service:service_item' %}"> Yes
+                            </a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'service:index' %}"> No </a></h6>
+                    </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

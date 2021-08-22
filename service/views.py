@@ -1,4 +1,4 @@
-from service.models import ServiceItem, Order, TeamMember, TrainingService
+from service.models import ServiceItem, Order, TeamMember, TrainingService,ConsultancyService
 from django.shortcuts import redirect, render
 
 
@@ -42,5 +42,62 @@ def team(request):
 def trainingServices(request):
     
     return render(request, 'service/training-courses.html')
+
+
+def consultancyServices(request):
+    if request.method == "POST":
+        ProjectDesign_preparation = request.POST.get('project_design')
+        if ProjectDesign_preparation == 'on':
+            ProjectDesign_preparation = True
+        EnvironmentalImpactAssessment = request.POST.get('environmental_impact')
+        if EnvironmentalImpactAssessment == 'on':
+            EnvironmentalImpactAssessment = True
+        FeasibilityStudy = request.POST.get('feasibility_study')
+        if FeasibilityStudy == 'on':
+            FeasibilityStudy = True
+        ProposalPreparation = request.POST.get('Proposal_Preparation')
+        if ProjectDesign_preparation == 'on':
+            ProjectDesign_preparation = True
+        BusinessPlan_preparation = request.POST.get('Business_Plan_preparation')
+        if BusinessPlan_preparation == 'on':
+            BusinessPlan_preparation = True
+        OrganizationalStructure = request.POST.get('Organizational_Structure')
+        if OrganizationalStructure == 'on':
+            OrganizationalStructure = True
+        SalaryScalePreparation = request.POST.get('Salary_Scale_Preparation')
+        if SalaryScalePreparation == 'on':
+            SalaryScalePreparation = True
+        JobEvaluationAndGrading = request.POST.get('JobEvaluationAndGrading')
+        if JobEvaluationAndGrading == 'on':
+            JobEvaluationAndGrading = True
+        StrategicPlanningManagement = request.POST.get('StrategicPlanningManagement')
+        if StrategicPlanningManagement == 'on':
+            StrategicPlanningManagement = True
+        TrainingNeedAssessmentSurvey  = request.POST.get('AssessmentSurvey')
+        if TrainingNeedAssessmentSurvey == 'on':
+            TrainingNeedAssessmentSurvey = True
+        ReformImplementation = request.POST.get('ReformImplementation')
+        if ReformImplementation == 'on':
+            ReformImplementation = True
+        OthersDocumentPreparation = request.POST.get('OthersDocumentPreparation')
+        if OthersDocumentPreparation == 'on':
+            OthersDocumentPreparation = True
+
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+
+        consultancy_services = ConsultancyService(ProjectDesign_preparation = ProjectDesign_preparation,
+        EnvironmentalImpactAssessment = EnvironmentalImpactAssessment, FeasibilityStudy = FeasibilityStudy,
+        ProposalPreparation = ProposalPreparation, BusinessPlan_preparation = BusinessPlan_preparation,
+        OrganizationalStructure = OrganizationalStructure, SalaryScalePreparation = SalaryScalePreparation,
+        JobEvaluationAndGrading = JobEvaluationAndGrading, StrategicPlanningManagement = StrategicPlanningManagement,
+        TrainingNeedAssessmentSurvey = TrainingNeedAssessmentSurvey, ReformImplementation = ReformImplementation,
+        OthersDocumentPreparation = OthersDocumentPreparation, username = username, email = email)
+
+        consultancy_services.save()
+        return redirect('service:index')
+
+    return render(request, 'service/consultancy-services.html')
+
 
 

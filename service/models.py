@@ -40,3 +40,22 @@ class TrainingService(models.Model):
     work_ethics_altitude = models.BooleanField(null = True)
     mind_set = models.BooleanField(null = True)
     project_management = models.BooleanField(null = True)
+
+class ConsultancyService(models.Model):
+    ProjectDesign_preparation = models.BooleanField(null = True)
+    EnvironmentalImpactAssessment = models.BooleanField(null = True)
+    FeasibilityStudy = models.BooleanField(null = True)
+    ProposalPreparation = models.BooleanField(null = True)
+    BusinessPlan_preparation = models.BooleanField(null = True)
+    OrganizationalStructure = models.BooleanField(null = True)
+    SalaryScalePreparation = models.BooleanField(null = True)
+    JobEvaluationAndGrading = models.BooleanField(null = True)
+    StrategicPlanningManagement = models.BooleanField(null = True)
+    TrainingNeedAssessmentSurvey = models.BooleanField(null = True)
+    ReformImplementation = models.BooleanField(null = True)
+    OthersDocumentPreparation = models.BooleanField(null = True)
+    username = models.CharField(max_length=100)
+    email = models.CharField(max_length=100, default='a@yahoo.com')
+
+    def __str__(self):
+        return self.username
