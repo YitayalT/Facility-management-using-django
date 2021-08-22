@@ -1,0 +1,39 @@
+{% extends "service/base.html" %}
+{% block content %}
+ <div class="container">
+     <div class="row">
+         <div class="col-md-6">
+             <div class="row">
+                 <div class="col-md-12 offset-md-3">
+                     <img src="{{service_item.image.url}}" style="height: 250px; width: 250px; border-radius: 2%; border: 1px solid rgb(145, 24, 24);">
+                 </div>
+             </div>
+         </div>
+         <div class="col-md-6">
+             <div class="row">
+                 <div class="col-md-12">
+                    <h5><b>Item Name:</b>{{service_item.item_name}}</h5>
+                 </div>
+             </div>
+          <!-- price -->
+             <div class="row">
+                <div class="col-md-12">
+                    <h5><b>Item price:</b>{{service_item.price}}</h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h5><b>Item quantity:</b>{{service_item.quantity}}</h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h5><b>status:</b>{{service_item.status}}</h5>
+                </div>
+            </div>
+         </div>
+     </div>
+ </div>
+{% endblock content %}

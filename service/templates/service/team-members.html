@@ -1,0 +1,28 @@
+{% extends 'service/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="h4 text-success">Our Teams</div>
+            <hr style="background-color: blue;">
+         </div>
+    </div>
+         <div class="row"> 
+                 {% for member in team_members %}
+                 <div class="col-md-4">
+                 <img src="{{member.image.url}}" alt="image not found" style="height: 100px; width: 100px; border-radius: 50%; align-content: center;">
+                 <br> 
+                 <h6>{{member.name}}</h6>
+                 <small>{{member.role}}</small>
+                 <br>
+                </div>
+                 {% endfor %}
+         </div>
+         <div class="row">
+            <div class="col-md-12">
+                <hr style="background-color: blue;">
+                <div class="text-warning" style="text-align: right; text-decoration: underline;"><small><b>call to action!</b></small></div>
+             </div>
+    </div>
+
+{% endblock content %}

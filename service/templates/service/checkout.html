@@ -1,0 +1,84 @@
+{% extends 'service/base.html' %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+      <!-- list group here -->
+      <ul class="list-group" id="item_list">
+
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="items" id="items">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="username">User Name</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="user name">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St">
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input type="text" class="form-control" id="location" name="location"
+            placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="city">City</label>
+            <input type="text" class="form-control" id="city" name="city">
+          </div>
+          <!-- <div class="form-group col-md-4">
+                  <label for="inputState">State</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                  </select>
+                </div> -->
+          <div class="form-group col-md-2">
+            <label for="fax">Fax</label>
+            <input type="text" class="form-control" id="fax" name="fax">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck" name="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Agree
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Place Order</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  if (localStorage.getItem('cart') == null) {
+    var cart = {};
+  }
+  else {
+    cart = JSON.parse(localStorage.getItem('cart'));
+  }
+  for (item in cart) {
+    let name = cart[item][1];
+    let quantity = cart[item][0];
+    let price = cart[item][2];
+    itemString = `<li class="list-group-item">${name}-${quantity}</li>`;
+    $('#item_list').append(itemString);
+  }
+  $('#items').val(JSON.stringify(cart));
+</script>
+{% endblock content %}

@@ -1,0 +1,70 @@
+{% extends "service/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="h4 text-success">{{ user.username }}, welcome to your profile page!</div>
+<hr style="background-color: brown;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 service">
+        <ul style="list-style-type: none; border: 1px solid rgb(170, 141, 146);">
+          <li><a href="#">Training</a></li>
+          <li><a href="{{ user_n.water }}">Water</a></li>
+          <li><a href="#">Refreshment</a></li>
+          <li><a href="#">Breakfast</a></li>
+          <li><a href="#">Lunch</a></li>
+          <li><a href="#">Dinner</a></li>
+          <li><a href="#">Bed</a></li>
+          <li><a href="#">Notebook</a></li>
+          <li><a href="#">Syndicate Room</a></li>
+          <li><a href="#">LCd</a></li>
+          <li><a href="#">Flip chart</a></li>
+          <li><a href="#">Hall</a></li>
+        </ul>
+      </div>
+      <div class="col-md-8">
+        <div class="content-section">
+          <div class="row">
+            <div class="col-md-6">
+              <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" style="height: 100px; width: 100px;">
+            </div>
+            <div class="col-md-6">
+              <div class="media">
+                
+                <div class="media-body">
+                  <h2 class="account-heading">{{ user.username }}</h2>
+
+                  {% for user_n in user_profile %}
+                  {% if user.id == user_n.user_id %}
+                  <p>{{ user.email }}</p>
+                  <p>User id: {{ user_n.user_id }}</p>
+                  <p>First Name: {{ user_n.first_name }}</p>
+                  <p>Last Name: {{ user_n.last_name }}</p>
+                  <p>Gender: {{ user_n.gender }}</p>
+                  <p>Worked For: {{ user_n.worked_for }}</p>
+                  <p>Location: {{ user_n.location }}</p>
+                  <p>Water: {{ user_n.water }}</p>
+                  <p>Lunch: {{ user_n.lunch }}</p>
+                  <p>Dinner: {{ user_n.dinner }}</p>
+                  <p>Brakefast: {{ user_n.brakefast }}</p>
+                  <p>Refreshment: {{ user_n.refreshment }}</p>
+                  <p>Dorm:{{ user_n.dorm }}</p>
+                  <p>Block: {{ user_n.block }}</p>                
+                  
+                  <!-- <a href="#" class="btn btn-outline-primary">see more of your profile</a> -->
+                  {% endif %}
+                  {% endfor %}
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!--  FORM HERE -->
+        </div>
+        <p class="small"><b><a href="#">update your profile</a></b></p>
+      </div>
+    </div>
+  
+  </div>
+   
+{% endblock content %}

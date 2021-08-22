@@ -1,0 +1,39 @@
+{% extends 'service/base.html' %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+        <p>{{ message }}</p>
+      </div>
+      {% endfor %}
+      {% endif %}
+
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="trainee_list"><b>Add your trainees list here:</b>
+          <input type="file" name="myFile" name="trainee_list">
+        </label>
+        <button class="btn btn-outline-info" type="submit">Add</button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <p class="text-mute">
+        <small>
+          <b>NB:</b>
+          Your file should have the following fields: id, user, first_name, last_name, image, gender, email,
+          worked_for, location, water, lunch, dinner, brakefast, refreshment, block, dorm. don't forget the file's format.i.e .  <b>xlsx</b>
+          <p>
+           <b>Don't fill the following fields. </b>
+           the id, user, image, water, lunch, dinner, brakefast, refreshment, block, dorm. left them blank but the rest are mandatory.  
+          </p>
+        </small>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock content %}

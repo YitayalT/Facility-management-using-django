@@ -1,0 +1,78 @@
+{% extends 'service/base.html' %}
+{% block content %}
+ <div class="container">
+     <div class="row">
+        {% for item in serviceItem %}
+        <div class="col-md-4 mt-3 mb-2">
+               <div class="card-deck">
+                  <div class="card" style="width: 18rem;">                    
+                      <div class="card-body">
+                          <img class="card-img-top imgresizing" src="{{item.image.url}}" alt="Card image cap">
+                          <div id="nm{{item.id}}" class="card-title">{{item.item_name}}</div>
+                          <div id="price{{item.id}}" class="card-title">{{item.price}}</div>
+                          <!-- <p class="card-text"></p> -->
+                          <center>
+                            <a href="/{{item.id}}" class="btn btn-outline-primary center"> View </a>
+                             <button id="{{item.id}}" class="btn atc btn-outline-primary center"> Add to cart </button>
+                        </center>
+                      </div>
+                  </div>
+              </div>
+            </div>
+    {% endfor %}
+     </div>
+ </div> 
+
+ <script>
+     console.log('This is Working');
+
+     if (localStorage.getItem('cart') == null){
+         var cart = {};
+     }else{
+         cart = JSON.parse(localStorage.getItem('cart'));
+     }
+
+     $(document).on('click', '.atc', function(){
+      console.log("The add to cart button is clicked");
+      var item_id = this.id.toString();
+      console.log(item_id);
+
+      if(cart[item_id] != undefined){
+          cart[item_id] = 1;
+          //quantity = cart[item_id][0] + 1;
+          //cart[item_id][0]  = quantity;
+          //cart[item_id][2] = cart[item_id][2]+parseFloat(document.getElementById('price'+item_id).innerHTML);
+          
+      }else{
+        //quantity = 1;
+        //name = document.getElementById('nm'+item_id).innerHTML;
+       // price = cart[item_id][2]+parseFloat(document.getElementById('price'+item_id).innerHTML);
+       // cart[item_id] = cart[quantity, name,price];     
+        cart[item_id] = 1;
+
+      }
+
+      console.log(cart);
+      localStorage.setItem('cart', JSON.stringify(cart)); 
+      document.getElementById('cart').innerHTML = 'Cart(' + Object.keys(cart).length + ')';
+     });
+   
+     
+      displayCart(cart);
+      function displayCart(cart){
+         var cartString = '';
+          cartString += '<h5> This is Your cart </h5>';
+          var cartIndex = 1;
+          for( x in cart){
+              cartString += cartIndex + '. ';
+              cartString += "<b>"+ document.getElementById('nm'+x).innerHTML + '->Quantity: ' + cart[x] + '</br>' +"</b>";
+              cartIndex += 1;
+            }
+            cartString += "<a href='/checkout' class='btn btn-warning' id='checkout'>checkout</a>";
+            $(function () {
+                document.getElementById('cart').setAttribute('data-content', cartString);
+                $('[data-toggle="popover"]').popover();
+            });       
+    }
+ </script>
+{% endblock content %}
