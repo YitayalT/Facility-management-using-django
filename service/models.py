@@ -42,6 +42,8 @@ class TrainingService(models.Model):
     project_management = models.BooleanField(null = True)
 
 class ConsultancyService(models.Model):
+    username = models.CharField(max_length=100)
+    email = models.CharField(max_length=100, default='a@yahoo.com')
     ProjectDesign_preparation = models.BooleanField(null = True)
     EnvironmentalImpactAssessment = models.BooleanField(null = True)
     FeasibilityStudy = models.BooleanField(null = True)
@@ -54,8 +56,7 @@ class ConsultancyService(models.Model):
     TrainingNeedAssessmentSurvey = models.BooleanField(null = True)
     ReformImplementation = models.BooleanField(null = True)
     OthersDocumentPreparation = models.BooleanField(null = True)
-    username = models.CharField(max_length=100)
-    email = models.CharField(max_length=100, default='a@yahoo.com')
+    
 
     def __str__(self):
         return self.username

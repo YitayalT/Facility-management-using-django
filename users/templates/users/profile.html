@@ -3,9 +3,9 @@
 {% block content %}
 <div class="h4 text-success">{{ user.username }}, welcome to your profile page!</div>
 <hr style="background-color: brown;">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 service">
+<div class="container">
+  <div class="row">
+    <!-- <div class="col-md-2 service">
         <ul style="list-style-type: none; border: 1px solid rgb(170, 141, 146);">
           <li><a href="#">Training</a></li>
           <li><a href="{{ user_n.water }}">Water</a></li>
@@ -20,51 +20,73 @@
           <li><a href="#">Flip chart</a></li>
           <li><a href="#">Hall</a></li>
         </ul>
-      </div>
-      <div class="col-md-8">
-        <div class="content-section">
-          <div class="row">
-            <div class="col-md-6">
-              <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" style="height: 100px; width: 100px;">
-            </div>
-            <div class="col-md-6">
-              <div class="media">
-                
-                <div class="media-body">
-                  <h2 class="account-heading">{{ user.username }}</h2>
+      </div> -->
+    <div class="col-md-12">
+      <div class="content-section">
+        <div class="row">
+          <div class="col-md-12 offset-md-6">
+            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}"
+              style="height: 100px; width: 100px;">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="media">
+              <div class="media-body">
+                <h6 class="account-heading"><b>welcome,{{ user.username }}</b></h6>
 
-                  {% for user_n in user_profile %}
-                  {% if user.id == user_n.user_id %}
-                  <p>{{ user.email }}</p>
-                  <p>User id: {{ user_n.user_id }}</p>
-                  <p>First Name: {{ user_n.first_name }}</p>
-                  <p>Last Name: {{ user_n.last_name }}</p>
-                  <p>Gender: {{ user_n.gender }}</p>
-                  <p>Worked For: {{ user_n.worked_for }}</p>
-                  <p>Location: {{ user_n.location }}</p>
-                  <p>Water: {{ user_n.water }}</p>
-                  <p>Lunch: {{ user_n.lunch }}</p>
-                  <p>Dinner: {{ user_n.dinner }}</p>
-                  <p>Brakefast: {{ user_n.brakefast }}</p>
-                  <p>Refreshment: {{ user_n.refreshment }}</p>
-                  <p>Dorm:{{ user_n.dorm }}</p>
-                  <p>Block: {{ user_n.block }}</p>                
-                  
+                {% for user_n in user_profile %}
+                {% if user.id == user_n.user_id %}
+                <div class="display_table">
+                <table border="1" class="table">
+                  <thead>
+                    <tr>
+                      <th>User id</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Gender</th>
+                      <th>Worked For</th>
+                      <th>Location</th>
+                      <th>Water</th>
+                      <th>Lunch</th>
+                      <th>Dinner</th>
+                      <th>Brakefast</th>
+                      <th>Refreshment</th>
+                      <th>Dorm</th>
+                      <th>Block</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td>{{user_n.id}}</td>
+                    <td>{{ user_n.first_name }}</td>
+                    <td>{{ user_n.last_name }}</td>
+                    <td>{{ user_n.gender }}</td>
+                    <td>{{ user_n.worked_for }}</td>
+                    <td>{{ user_n.location }}</td>
+                    <td>{{ user_n.water }}</td>
+                    <td>{{ user_n.lunch }}</td>
+                    <td>{{ user_n.dinner }}</td>
+                    <td>{{ user_n.brakefast }}</td>
+                    <td>{{ user_n.refreshment }}</td>
+                    <td>{{ user_n.dorm }}</td>
+                    <td>{{ user_n.block }}</td>
+                  </tr>
                   <!-- <a href="#" class="btn btn-outline-primary">see more of your profile</a> -->
                   {% endif %}
                   {% endfor %}
-                  
-                </div>
+                </table>
+              </div>
               </div>
             </div>
           </div>
-          
-          <!--  FORM HERE -->
         </div>
-        <p class="small"><b><a href="#">update your profile</a></b></p>
+
+        <!--  FORM HERE -->
       </div>
+      <p class="small"><b><a href="#">update your profile</a></b></p>
     </div>
-  
   </div>
-   
+
+</div>
+
 {% endblock content %}

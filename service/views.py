@@ -46,6 +46,8 @@ def trainingServices(request):
 
 def consultancyServices(request):
     if request.method == "POST":
+        username = request.POST.get('username')
+        email = request.POST.get('email')
         ProjectDesign_preparation = request.POST.get('project_design')
         if ProjectDesign_preparation == 'on':
             ProjectDesign_preparation = True
@@ -83,16 +85,14 @@ def consultancyServices(request):
         if OthersDocumentPreparation == 'on':
             OthersDocumentPreparation = True
 
-        username = request.POST.get('username')
-        email = request.POST.get('email')
 
-        consultancy_services = ConsultancyService(ProjectDesign_preparation = ProjectDesign_preparation,
+        consultancy_services = ConsultancyService(username = username, email = email, ProjectDesign_preparation = ProjectDesign_preparation,
         EnvironmentalImpactAssessment = EnvironmentalImpactAssessment, FeasibilityStudy = FeasibilityStudy,
         ProposalPreparation = ProposalPreparation, BusinessPlan_preparation = BusinessPlan_preparation,
         OrganizationalStructure = OrganizationalStructure, SalaryScalePreparation = SalaryScalePreparation,
         JobEvaluationAndGrading = JobEvaluationAndGrading, StrategicPlanningManagement = StrategicPlanningManagement,
         TrainingNeedAssessmentSurvey = TrainingNeedAssessmentSurvey, ReformImplementation = ReformImplementation,
-        OthersDocumentPreparation = OthersDocumentPreparation, username = username, email = email)
+        OthersDocumentPreparation = OthersDocumentPreparation)
 
         consultancy_services.save()
         return redirect('service:index')

@@ -28,7 +28,7 @@ def profilePage(request):
     # print(user_profile.first_name)
     return render(request, 'users/profile.html',{'user_profile':user_profile})
     
-    
+    # This fraction of code is used to upload the customers. it simply adds an excl file
 def simpleUpload(request):
     if request.method == 'POST':
         person_resource = PersonResource()

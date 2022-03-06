@@ -363,12 +363,33 @@
                     <!-- third next here -->
                 </div>
             </div>
-            
             <div class="row">
                 <div class="col-md-12">
-                    <hr style="background-color: blue;">
-                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="username"><small>Requested By:</small></label>
+                      <input type="text" class="form-control" id="username" name="username" placeholder="user name">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="email"> <small>Email:</small></label>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                    </div>
+                  </div>
             </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <hr style="background-color: blue;">
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-12 offset-md-6">
+                <button type="submit"  class="btn atc btn-outline-primary center"> submit </button>
+            </div>
+        </div>
+            
+    
             <div class="row">
                 <div class="col-md-4">
                     <b><a href="{% url 'service:consultancy_service' %}"> &nbsp;&nbsp;&nbsp;&nbsp; Consultancy services</a></b>
